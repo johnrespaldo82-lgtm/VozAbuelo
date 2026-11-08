@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Descomprimir proyecto
-        run: unzip -o VozAbuelo.zip
-      - uses: actions/setup-java@v4
+        run: unzip -o VozAbuelo.zip || python3 -m zipfile -e VozAbuelo.zip .
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
